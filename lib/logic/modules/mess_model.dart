@@ -101,7 +101,7 @@ class Mess {
 
   Mess.fromFirestore(Map<String?, dynamic> firestoreMap)
       : id = firestoreMap['id'] ?? "",
-        sunday_b = firestoreMap['sunday_b'] ?? "??" "",
+        sunday_b = firestoreMap['sunday_b'] ?? "",
         sunday_l = firestoreMap['sunday_l'] ?? "",
         sunday_s = firestoreMap['sunday_s'] ?? "",
         sunday_d = firestoreMap['sunday_d'] ?? "",
