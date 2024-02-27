@@ -28,11 +28,12 @@ class Mess {
   String saturday_l;
   String saturday_s;
   String saturday_d;
-  
+  List<String?> weekdaysB = [];
+  List<String?> weekdaysL = [];
+  List<String?> weekdaysS = [];
+  List<String?> weekdaysD = [];
 
-
-  Mess(
-    {
+  Mess({
     required this.id,
     required this.sunday_b,
     required this.sunday_l,
@@ -62,44 +63,102 @@ class Mess {
     required this.saturday_l,
     required this.saturday_s,
     required this.saturday_d,
-
   });
 
   Map<String, dynamic> createMap() {
-    return {'id': id, 'sunday_b': sunday_b, 'sunday_l': sunday_l, 'sunday_s': sunday_s, 'sunday_d': sunday_d, 'monday_b': monday_b, 'monday_l': monday_l, 'monday_s': monday_s, 'monday_d': monday_d, 'tuesday_b': tuesday_b, 'tuesday_l': tuesday_l, 'tuesday_s': tuesday_s, 'tuesday_d': tuesday_d, 'wednesday_b': wednesday_b, 'wednesday_l': wednesday_l, 'wednesday_s': wednesday_s, 'wednesday_d': wednesday_d, 'thursday_b': thursday_b, 'thursday_l': thursday_l, 'thursday_s': thursday_s, 'thursday_d': thursday_d, 'friday_b': friday_b, 'friday_l': friday_l, 'friday_s': friday_s, 'friday_d': friday_d, 'saturday_b': saturday_b, 'saturday_l': saturday_l, 'saturday_s': saturday_s, 'saturday_d': saturday_d, };
+    return {
+      'id': id,
+      'sunday_b': sunday_b,
+      'sunday_l': sunday_l,
+      'sunday_s': sunday_s,
+      'sunday_d': sunday_d,
+      'monday_b': monday_b,
+      'monday_l': monday_l,
+      'monday_s': monday_s,
+      'monday_d': monday_d,
+      'tuesday_b': tuesday_b,
+      'tuesday_l': tuesday_l,
+      'tuesday_s': tuesday_s,
+      'tuesday_d': tuesday_d,
+      'wednesday_b': wednesday_b,
+      'wednesday_l': wednesday_l,
+      'wednesday_s': wednesday_s,
+      'wednesday_d': wednesday_d,
+      'thursday_b': thursday_b,
+      'thursday_l': thursday_l,
+      'thursday_s': thursday_s,
+      'thursday_d': thursday_d,
+      'friday_b': friday_b,
+      'friday_l': friday_l,
+      'friday_s': friday_s,
+      'friday_d': friday_d,
+      'saturday_b': saturday_b,
+      'saturday_l': saturday_l,
+      'saturday_s': saturday_s,
+      'saturday_d': saturday_d,
+    };
   }
 
-  Mess.fromFirestore(Map<String, dynamic> firestoreMap)
-      : id = firestoreMap['id'],
-      sunday_b = firestoreMap['sunday_b'],
-      sunday_l = firestoreMap['sunday_l'],
-      sunday_s = firestoreMap['sunday_s'],
-      sunday_d = firestoreMap['sunday_d'],
-      monday_b = firestoreMap['monday_b'],
-      monday_l = firestoreMap['monday_l'],
-      monday_s = firestoreMap['monday_s'],
-      monday_d = firestoreMap['monday_d'],
-      tuesday_b = firestoreMap['tuesday_b'],
-      tuesday_l = firestoreMap['tuesday_l'],
-      tuesday_s = firestoreMap['tuesday_s'],
-      tuesday_d = firestoreMap['tuesday_d'],
-      wednesday_b = firestoreMap['wednesday_b'],
-      wednesday_l = firestoreMap['wednesday_l'],
-      wednesday_s = firestoreMap['wednesday_s'],
-      wednesday_d = firestoreMap['wednesday_d'],
-      thursday_b = firestoreMap['thursday_b'],
-      thursday_l = firestoreMap['thursday_l'],
-      thursday_s = firestoreMap['thursday_s'],
-      thursday_d = firestoreMap['thursday_d'],
-      friday_b = firestoreMap['friday_b'],
-      friday_l = firestoreMap['friday_l'],
-      friday_s = firestoreMap['friday_s'],
-      friday_d = firestoreMap['friday_d'],
-      saturday_b = firestoreMap['saturday_b'],
-      saturday_l = firestoreMap['saturday_l'],
-      saturday_s = firestoreMap['saturday_s'],
-      saturday_d = firestoreMap['saturday_d'];
-       
-
-
+  Mess.fromFirestore(Map<String?, dynamic> firestoreMap)
+      : id = firestoreMap['id'] ?? "",
+        sunday_b = firestoreMap['sunday_b'] ?? "??" "",
+        sunday_l = firestoreMap['sunday_l'] ?? "",
+        sunday_s = firestoreMap['sunday_s'] ?? "",
+        sunday_d = firestoreMap['sunday_d'] ?? "",
+        monday_b = firestoreMap['monday_b'] ?? "",
+        monday_l = firestoreMap['monday_l'] ?? "",
+        monday_s = firestoreMap['monday_s'] ?? "",
+        monday_d = firestoreMap['monday_d'] ?? "",
+        tuesday_b = firestoreMap['tuesday_b'] ?? "",
+        tuesday_l = firestoreMap['tuesday_l'] ?? "",
+        tuesday_s = firestoreMap['tuesday_s'] ?? "",
+        tuesday_d = firestoreMap['tuesday_d'] ?? "",
+        wednesday_b = firestoreMap['wednesday_b'] ?? "",
+        wednesday_l = firestoreMap['wednesday_l'] ?? "",
+        wednesday_s = firestoreMap['wednesday_s'] ?? "",
+        wednesday_d = firestoreMap['wednesday_d'] ?? "",
+        thursday_b = firestoreMap['thursday_b'] ?? "",
+        thursday_l = firestoreMap['thursday_l'] ?? "",
+        thursday_s = firestoreMap['thursday_s'] ?? "",
+        thursday_d = firestoreMap['thursday_d'] ?? "",
+        friday_b = firestoreMap['friday_b'] ?? "",
+        friday_l = firestoreMap['friday_l'] ?? "",
+        friday_s = firestoreMap['friday_s'] ?? "",
+        friday_d = firestoreMap['friday_d'] ?? "",
+        saturday_b = firestoreMap['saturday_b'] ?? "",
+        saturday_l = firestoreMap['saturday_l'] ?? "",
+        saturday_s = firestoreMap['saturday_s'] ?? "",
+        saturday_d = firestoreMap['saturday_d'] ?? "",
+        weekdaysB = [
+          firestoreMap['monday_b'] ?? "",
+          firestoreMap['tuesday_b'] ?? "",
+          firestoreMap['wednesday_b'] ?? "",
+          firestoreMap['thursday_b'] ?? "",
+          firestoreMap['friday_b'] ?? "",
+          firestoreMap['saturday_b'] ?? ""
+        ],
+        weekdaysL = [
+          firestoreMap['monday_l'] ?? "",
+          firestoreMap['tuesday_l'] ?? "",
+          firestoreMap['wednesday_l'] ?? "",
+          firestoreMap['thursday_l'] ?? "",
+          firestoreMap['friday_l'] ?? "",
+          firestoreMap['saturday_l'] ?? ""
+        ],
+        weekdaysS = [
+          firestoreMap['monday_s'] ?? "",
+          firestoreMap['tuesday_s'] ?? "",
+          firestoreMap['wednesday_s'] ?? "",
+          firestoreMap['thursday_s'] ?? "",
+          firestoreMap['friday_s'] ?? "",
+          firestoreMap['saturday_s'] ?? ""
+        ],
+        weekdaysD = [
+          firestoreMap['monday_d'] ?? "",
+          firestoreMap['tuesday_d'] ?? "",
+          firestoreMap['wednesday_d'] ?? "",
+          firestoreMap['thursday_d'] ?? "",
+          firestoreMap['friday_d'] ?? "",
+          firestoreMap['saturday_d'] ?? ""
+        ];
 }

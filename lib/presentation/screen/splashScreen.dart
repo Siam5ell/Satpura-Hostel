@@ -15,12 +15,12 @@ class SplashScreen1 extends StatefulWidget {
 }
 
 class _SplashScreen1State extends State<SplashScreen1> {
-  int loginNum = 0;
+  int loginNum = 2;
   var emailAddress;
   @override
   void initState() {
     super.initState();
-    checkUserType();
+    // checkUserType();
     Timer(
       Duration(seconds: 3),
       () => Navigator.of(context).pushReplacement(
@@ -69,21 +69,19 @@ class _SplashScreen1State extends State<SplashScreen1> {
     return Scaffold(
       backgroundColor: Color(0xFFfbd1c0),
       body: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    'assets/images/login.png',
-                 
-                  ),
-                  SizedBox(
-                    height: 40,),
-                             CircularProgressIndicator(),
-
-                ],
-              ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Image.asset(
+              'assets/images/login.png',
             ),
-      
+            SizedBox(
+              height: 40,
+            ),
+            CircularProgressIndicator(),
+          ],
+        ),
+      ),
     );
   }
 }

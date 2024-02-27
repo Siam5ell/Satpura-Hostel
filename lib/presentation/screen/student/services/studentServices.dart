@@ -1,6 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:hostelapplication/core/constant/string.dart';
+
 import 'package:hostelapplication/presentation/screen/student/studentDrawer.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -17,65 +16,18 @@ class StudentServicesScreen extends StatefulWidget {
 class _StudentServicesScreenState extends State<StudentServicesScreen> {
   @override
   Widget build(BuildContext context) {
-    List<Mess> messList = [];
+    // List<Mess> messList = [];
 
-    final messListRaw = Provider.of<List<Mess>?>(context);
-
-    messListRaw?.forEach(
-      (element) {
-        {
-          messList.add(element);
-        }
-        ;
-      },
-    );
-    // Get the current day of the week as an integer
+    final messList = Provider.of<List<Mess>?>(context);
 
     int currentWeekday = DateTime.now().weekday;
     currentWeekday = currentWeekday - 1;
-
 // Map weekdays to their corresponding text
-    List<String?> weekdaysB = [
-      messList.isNotEmpty == true ? messList[0].monday_b : null,
-      messList.isNotEmpty == true ? messList[0].tuesday_b : null,
-      messList.isNotEmpty == true ? messList[0].wednesday_b : null,
-      messList.isNotEmpty == true ? messList[0].thursday_b : null,
-      messList.isNotEmpty == true ? messList[0].friday_b : null,
-      messList.isNotEmpty == true ? messList[0].saturday_b : null,
-      messList.isNotEmpty == true ? messList[0].sunday_b : null,
-    ];
-
-    List<String?> weekdaysL = [
-      messList.isNotEmpty == true ? messList[0].monday_l : null,
-      messList.isNotEmpty == true ? messList[0].tuesday_l : null,
-      messList.isNotEmpty == true ? messList[0].wednesday_l : null,
-      messList.isNotEmpty == true ? messList[0].thursday_l : null,
-      messList.isNotEmpty == true ? messList[0].friday_l : null,
-      messList.isNotEmpty == true ? messList[0].saturday_l : null,
-      messList.isNotEmpty == true ? messList[0].sunday_l : null,
-    ];
-    List<String?> weekdaysS = [
-      messList.isNotEmpty == true ? messList[0].monday_s : null,
-      messList.isNotEmpty == true ? messList[0].tuesday_s : null,
-      messList.isNotEmpty == true ? messList[0].wednesday_s : null,
-      messList.isNotEmpty == true ? messList[0].thursday_s : null,
-      messList.isNotEmpty == true ? messList[0].friday_s : null,
-      messList.isNotEmpty == true ? messList[0].saturday_s : null,
-      messList.isNotEmpty == true ? messList[0].sunday_s : null,
-    ];
-    List<String?> weekdaysD = [
-      messList.isNotEmpty == true ? messList[0].monday_d : null,
-      messList.isNotEmpty == true ? messList[0].tuesday_d : null,
-      messList.isNotEmpty == true ? messList[0].wednesday_d : null,
-      messList.isNotEmpty == true ? messList[0].thursday_d : null,
-      messList.isNotEmpty == true ? messList[0].friday_d : null,
-      messList.isNotEmpty == true ? messList[0].saturday_d : null,
-      messList.isNotEmpty == true ? messList[0].sunday_d : null,
-    ];
 
     return Scaffold(
-      backgroundColor:
-          messList.length != 0 ? Colors.grey[200] : Colors.lightBlue.shade200,
+      backgroundColor: messList != null && messList.length != 0
+          ? Colors.grey[200]
+          : Colors.lightBlue.shade200,
       appBar: AppBar(
         title: const Text(
           'Mess Services',
@@ -84,13 +36,13 @@ class _StudentServicesScreenState extends State<StudentServicesScreen> {
         backgroundColor: Color(0xFFfbd1c0),
       ),
       drawer: const StudentDrawer(),
-      body: messList != []
+      body: context.watch<List<Mess>?>() != null
           ? Container(
               padding: const EdgeInsets.all(12.0),
               decoration: BoxDecoration(color: Color(0xFFfbd1c0)),
               child: ListView.builder(
                 itemCount:
-                    messList != [] && messList.isNotEmpty ? messList.length : 0,
+                    messList != [] && messList != null ? messList.length : 0,
                 itemBuilder: (context, index) {
                   return Container(
                     margin: EdgeInsets.all(10),
@@ -191,7 +143,7 @@ class _StudentServicesScreenState extends State<StudentServicesScreen> {
                                             ),
                                             TextSpan(
                                               text:
-                                                  ' - ${weekdaysB[currentWeekday]}',
+                                                  ' - ${messList != null ? messList[0].weekdaysB[currentWeekday] : ""}',
                                               style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 17,
@@ -235,7 +187,7 @@ class _StudentServicesScreenState extends State<StudentServicesScreen> {
                                             ),
                                             TextSpan(
                                               text:
-                                                  ' - ${weekdaysL[currentWeekday]}',
+                                                  ' - ${messList != null ? messList[0].weekdaysL[currentWeekday] : ""}',
                                               style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 17,
@@ -279,7 +231,7 @@ class _StudentServicesScreenState extends State<StudentServicesScreen> {
                                             ),
                                             TextSpan(
                                               text:
-                                                  ' - ${weekdaysS[currentWeekday]}',
+                                                  ' - ${messList != null ? messList[0].weekdaysS[currentWeekday] : ""}',
                                               style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 17,
@@ -323,7 +275,7 @@ class _StudentServicesScreenState extends State<StudentServicesScreen> {
                                             ),
                                             TextSpan(
                                               text:
-                                                  ' - ${weekdaysD[currentWeekday]}',
+                                                  ' - ${messList != null ? messList[0].weekdaysD[currentWeekday] : ""}',
                                               style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 17,

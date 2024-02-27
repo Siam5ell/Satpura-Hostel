@@ -69,7 +69,7 @@ class ProfilePage extends StatelessWidget {
                                               shape: BoxShape.circle,
                                               image: DecorationImage(
                                                 image: AssetImage(
-                                                    'assets/images/aditya.jpeg'),
+                                                    'assets/images/ark.jpeg'),
                                                 fit: BoxFit.cover,
                                               ),
                                             ),
@@ -87,7 +87,7 @@ class ProfilePage extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    'Aditya Kumar',
+                                    'Ark Verma',
                                     style: TextStyle(
                                       fontSize: 29,
                                       fontWeight: FontWeight.w600,
@@ -113,7 +113,7 @@ class ProfilePage extends StatelessWidget {
                                           child: Container(
                                             alignment: Alignment.center,
                                             child: Text(
-                                              "Batch of '23",
+                                              "Batch of '25",
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 fontWeight: FontWeight.w600,
